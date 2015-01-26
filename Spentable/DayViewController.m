@@ -7,6 +7,7 @@
 //
 
 #import "DayViewController.h"
+#import "FormatHelper.h"
 
 static NSString *kCellIdentifier = @"DateCollectionViewCell";
 static NSString *kRecordTableViewCell = @"RecordTableViewCell";
@@ -83,10 +84,15 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
     UILabel *categoryLabel = (UILabel *)[cell viewWithTag:101];
     UILabel *costLabel = (UILabel *)[cell viewWithTag:102];
+    UILabel *timeLabel = (UILabel *)[cell viewWithTag:103];
     HDTableRecord *record = (HDTableRecord *)[self.recordsArray objectAtIndex:indexPath.row];
     
     categoryLabel.text = record.category.categoryKeyOrName;
-    costLabel.text = [NSString stringWithFormat:@"$%f", record.cost];
+    
+    costLabel.text = [FormatHelper costWithFormat:record.cost];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mmaa"];
+    timeLabel.text = [dateFormatter stringFromDate:record.date];
     
     
     return cell;

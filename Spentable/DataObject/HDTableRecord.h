@@ -16,5 +16,7 @@
 @property HDCategory *category;
 @property NSDate *date;
 @property double cost;
+// Non table scheme
+@property NSInteger countOfRecord;
 
 @end

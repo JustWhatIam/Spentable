@@ -17,6 +17,10 @@
     return self;
 }
 
++ (NSArray *)ignoredProperties {
+    return @[@"countOfRecord"];
+}
+
 - (void)dealloc {
     NSLog(@"eee");
 }

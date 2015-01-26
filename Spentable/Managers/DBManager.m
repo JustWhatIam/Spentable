@@ -105,6 +105,7 @@ static DBManager *_instance = nil;
             record.category = category;
             record.cost = [sum doubleValue];
             record.date = [(HDTableRecord *)[result firstObject] date];
+            record.countOfRecord = result.count;
         
             [array addObject:record];
         }

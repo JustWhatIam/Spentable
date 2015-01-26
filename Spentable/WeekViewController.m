@@ -7,6 +7,7 @@
 //
 
 #import "WeekViewController.h"
+#import "FormatHelper.h"
 #import "DBManager.h"
 
 static NSString *kRecordTableViewCell = @"RecordTableViewCell";
@@ -76,18 +77,23 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRecordTableViewCell];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kRecordTableViewCell];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kRecordTableViewCell forIndexPath:indexPath];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:kRecordTableViewCell];
+//    }
 //
-//    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
-//    UILabel *categoryLabel = (UILabel *)[cell viewWithTag:101];
-//    UILabel *costLabel = (UILabel *)[cell viewWithTag:102];
-    HDTableRecord *record = (HDTableRecord *)[self.recordsArray objectAtIndex:indexPath.row];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
+    UILabel *categoryLabel = (UILabel *)[cell viewWithTag:101];
+    UILabel *costLabel = (UILabel *)[cell viewWithTag:102];
+    UILabel *countOfResultsLabel = (UILabel *)[cell viewWithTag:103];
     
-    cell.detailTextLabel.text = record.category.categoryKeyOrName;
-    cell.textLabel.text = [NSString stringWithFormat:@"$%f", record.cost];
+    HDTableRecord *record = (HDTableRecord *)[self.recordsArray objectAtIndex:indexPath.row];
+    categoryLabel.text = record.category.categoryKeyOrName;
+    costLabel.text = [FormatHelper costWithFormat:record.cost];
+    countOfResultsLabel.text = [FormatHelper countOfRecordsWithFormat:record.countOfRecord];
+//    cell.detailTextLabel.text = record.category.categoryKeyOrName;
+//
+//    cell.textLabel.text = [FormatHelper costWithFormat:record.cost];
     
     
     return cell;
