@@ -1,0 +1,9 @@
+
+/* Class = "IBUISegmentedControl"; WMk-3a-rfc.segmentTitles[0] = "Day"; ObjectID = "WMk-3a-rfc"; */
+"WMk-3a-rfc.segmentTitles[0]" = "Day";
+
+/* Class = "IBUISegmentedControl"; WMk-3a-rfc.segmentTitles[1] = "Week"; ObjectID = "WMk-3a-rfc"; */
+"WMk-3a-rfc.segmentTitles[1]" = "Week";
+
+/* Class = "IBUISegmentedControl"; WMk-3a-rfc.segmentTitles[2] = "Month"; ObjectID = "WMk-3a-rfc"; */
+"WMk-3a-rfc.segmentTitles[2]" = "Month";
