@@ -84,8 +84,9 @@ static NSString *kCategoryIdentifier = @"CategoryViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCategoryIdentifier forIndexPath:indexPath];
-    
-    UILabel *label = (UILabel *)[cell viewWithTag:100];
+
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
+    UILabel *label = (UILabel *)[cell viewWithTag:101];
     id obj = self.categories[[indexPath row]];
     if ([obj isKindOfClass:[HDCategory class]]) {
         HDCategory *cate = (HDCategory *)obj;
