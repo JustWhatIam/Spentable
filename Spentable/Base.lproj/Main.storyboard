@@ -191,7 +191,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="datetime" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06G-tK-ftG" userLabel="Time Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="datetime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06G-tK-ftG" userLabel="Time Label">
                                                     <rect key="frame" x="205" y="24" width="100" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,11 +255,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOU-Pb-cqn" userLabel="Date Label">
+                                <rect key="frame" x="55" y="0.0" width="210" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Tnk-9j-J2t"/>
+                                    <constraint firstAttribute="width" constant="210" id="muA-z3-4Cz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqZ-NV-O6j" userLabel="Sum Label">
+                                <rect key="frame" x="55" y="30" width="210" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dmA-3x-7UI"/>
+                                    <constraint firstAttribute="width" constant="210" id="nlU-ys-jHd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-9p-1jB" userLabel="Week Chooser View" customClass="BEMSimpleLineGraphView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="170"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="X6O-lb-7da"/>
+                                    <constraint firstAttribute="height" constant="170" id="X6O-lb-7da"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="Qr7-U3-lG0" id="lz2-dk-LAG"/>
@@ -267,7 +287,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rja-B7-mGi">
-                                <rect key="frame" x="0.0" y="210" width="320" height="358"/>
+                                <rect key="frame" x="0.0" y="240" width="320" height="328"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordTableViewCell" rowHeight="66" id="rvH-zI-Aww">
@@ -298,7 +318,7 @@
                                                     <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bu-tl-Eah" userLabel="Cost Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bu-tl-Eah" userLabel="Cost Label">
                                                     <rect key="frame" x="74" y="20" width="246" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="SdO-wv-gAh"/>
@@ -319,14 +339,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="0bu-tl-Eah" secondAttribute="trailing" id="qPe-uw-KpK"/>
                                                 <constraint firstItem="0bu-tl-Eah" firstAttribute="leading" secondItem="8bD-RD-xkS" secondAttribute="trailing" constant="22" id="sCk-yl-gee"/>
                                                 <constraint firstItem="w7f-9R-79t" firstAttribute="leading" secondItem="bPh-LT-hQo" secondAttribute="leading" id="twn-En-LLp"/>
-                                                <constraint firstItem="eaL-iV-PDc" firstAttribute="leading" secondItem="w7f-9R-79t" secondAttribute="trailing" id="uav-lj-ElY"/>
                                                 <constraint firstItem="0bu-tl-Eah" firstAttribute="top" secondItem="bPh-LT-hQo" secondAttribute="top" constant="20" id="x5d-Jt-jsp"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="uav-lj-ElY"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -339,16 +353,30 @@
                         <constraints>
                             <constraint firstItem="rja-B7-mGi" firstAttribute="top" secondItem="ThJ-9p-1jB" secondAttribute="bottom" id="04J-1I-RsN"/>
                             <constraint firstItem="rja-B7-mGi" firstAttribute="trailing" secondItem="ThJ-9p-1jB" secondAttribute="trailing" id="7be-uH-eea"/>
+                            <constraint firstItem="IOU-Pb-cqn" firstAttribute="top" secondItem="4wk-80-eOV" secondAttribute="topMargin" id="7s4-tc-Nm9"/>
                             <constraint firstAttribute="trailing" secondItem="ThJ-9p-1jB" secondAttribute="trailing" id="B7C-Es-wz2"/>
+                            <constraint firstAttribute="centerX" secondItem="IOU-Pb-cqn" secondAttribute="centerX" id="EbO-Dw-FWI"/>
                             <constraint firstItem="B9C-cq-fsn" firstAttribute="top" secondItem="rja-B7-mGi" secondAttribute="bottom" id="FX0-I8-Bs2"/>
-                            <constraint firstItem="ThJ-9p-1jB" firstAttribute="top" secondItem="4wk-80-eOV" secondAttribute="top" id="Hcz-Jf-BFs"/>
+                            <constraint firstItem="ThJ-9p-1jB" firstAttribute="top" secondItem="4wk-80-eOV" secondAttribute="top" constant="40" id="Hcz-Jf-BFs"/>
+                            <constraint firstAttribute="centerX" secondItem="gqZ-NV-O6j" secondAttribute="centerX" id="I6F-Rb-y2b"/>
                             <constraint firstItem="rja-B7-mGi" firstAttribute="leading" secondItem="ThJ-9p-1jB" secondAttribute="leading" id="Kgj-ef-E2R"/>
+                            <constraint firstItem="gqZ-NV-O6j" firstAttribute="top" secondItem="4wk-80-eOV" secondAttribute="top" id="WoJ-CW-Pwf"/>
                             <constraint firstItem="ThJ-9p-1jB" firstAttribute="leading" secondItem="4wk-80-eOV" secondAttribute="leading" id="dko-gF-cYz"/>
+                            <constraint firstItem="ThJ-9p-1jB" firstAttribute="top" secondItem="gqZ-NV-O6j" secondAttribute="bottom" id="pA8-el-eod"/>
+                            <constraint firstItem="gqZ-NV-O6j" firstAttribute="top" secondItem="IOU-Pb-cqn" secondAttribute="bottom" id="rkD-Z6-nMw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Hcz-Jf-BFs"/>
+                                <exclude reference="WoJ-CW-Pwf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="dateLabel" destination="IOU-Pb-cqn" id="t30-yN-FHB"/>
                         <outlet property="recordTableView" destination="rja-B7-mGi" id="SKe-Xl-mcx"/>
+                        <outlet property="sumLabel" destination="gqZ-NV-O6j" id="w6D-0J-Vd4"/>
                         <outlet property="weekChooserView" destination="ThJ-9p-1jB" id="zps-og-OSI"/>
                     </connections>
                 </viewController>
@@ -775,7 +803,7 @@
                                                     <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7id-K5-FSv" userLabel="Cost Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7id-K5-FSv" userLabel="Cost Label">
                                                     <rect key="frame" x="74" y="20" width="240" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="YEc-TK-upp"/>

@@ -18,9 +18,12 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
 
 @property(weak, nonatomic) IBOutlet BEMSimpleLineGraphView *weekChooserView;
 @property(weak, nonatomic) IBOutlet UITableView *recordTableView;
+@property(weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property(weak, nonatomic) IBOutlet UILabel *sumLabel;
 @property(strong, nonatomic) RLMResults *weekRecords;
 @property(strong, nonatomic) NSArray *recordsArray;
 @property(strong, nonatomic) NSDate *currentDate;
+@property(assign, nonatomic) NSInteger selectedIndex;
 
 @end
 
@@ -33,6 +36,10 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
     self.weekChooserView.enableXAxisLabel = YES;
 //    self.weekChooserView.enableReferenceYAxisLines = YES;
 //    self.weekChooserView.enableYAxisLabel = YES;
+    self.weekChooserView.enableTouchReport = YES;
+    self.weekChooserView.enablePopUpReport = YES;
+    self.weekChooserView.alwaysDisplayDots = YES;
+    self.weekChooserView.alwaysDisplayPopUpLabels = YES;
 
 }
 
@@ -85,6 +92,12 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
     return str;
 }
 
+- (void)lineGraph:(BEMSimpleLineGraphView *)graph didReleaseTouchFromGraphWithClosestIndex:(CGFloat)index {
+    // Update the interface to display relevant data
+    self.selectedIndex = index;
+    [self.recordTableView reloadData];
+}
+
 
 //- (NSString *)popUpSuffixForlineGraph:(BEMSimpleLineGraphView *)graph {
 //    return @"miles";
@@ -94,13 +107,25 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
 //    if (index == 0 || index == 10) return YES;
 //    else return NO;
 //}
-
-- (NSInteger)getIndexInWeek {
+- (NSString *)getDateRangeOfWeek {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];
     
-    NSTimeInterval interval = [self.currentDate timeIntervalSinceDate:[DateHelper firstOfWeek:self.currentDate]];
+    NSDate* date = [DateHelper firstOfWeek:self.currentDate andAddDays:6];
+    NSString* str = [dateFormatter stringFromDate:date];
     
-    return interval / 86400;
+    [dateFormatter setDateFormat:@"dd - "];
+    date = [DateHelper firstOfWeek:self.currentDate];
+    
+    str = [[dateFormatter stringFromDate:date] stringByAppendingString:str];
+    
+    [dateFormatter setDateFormat:@", MMMM, yyyy"];
+    str = [str stringByAppendingString:[dateFormatter stringFromDate:date]];
+    
+    return str;
+    
 }
+
 
 #pragma mark - inherit from BaseViewController
 
@@ -109,16 +134,30 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
         self.weekRecords = recordList;
         self.currentDate = [NSDate date];
         
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-
-        for (int i= 0; i < 7; i++) {
-            
-            NSPredicate *pred = [DateHelper getTodayPredicate:[DateHelper firstOfWeek:self.currentDate andAddDays:i]];
-            RLMResults *dayRecord = [recordList objectsWithPredicate:pred];
-            [array addObject:[[DBManager instance] getSumOfRecords:dayRecord]];
-        }
+        NSTimeInterval interval = [self.currentDate timeIntervalSinceDate:[DateHelper firstOfWeek:self.currentDate]];
+        self.selectedIndex = interval / 86400;
         
+        self.dateLabel.text = [self getDateRangeOfWeek];
+        
+        
+        NSInteger sum = 0;
+        
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        
+        for (int i= 0; i < 7; i++) {
+            NSPredicate *pred = [DateHelper getTodayPredicate:[DateHelper firstOfWeek:self.currentDate andAddDays:i]];
+            
+            RLMResults *dayRecord = [recordList objectsWithPredicate:pred];
+            for (HDTableRecord *record in dayRecord) {
+                sum += record.cost;
+            }
+
+            [array addObject:[[DBManager instance] getSumOfRecords:dayRecord]];
+            
+        }
+
         self.recordsArray = [NSArray arrayWithArray:array];
+        self.sumLabel.text = [FormatHelper costWithFormat:sum];
         
         [self.recordTableView reloadData];
         [self.weekChooserView reloadGraph];
@@ -129,7 +168,7 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    RLMResults* result = self.recordsArray[[self getIndexInWeek]];
+    RLMResults* result = self.recordsArray[self.selectedIndex];
     return result.count;
 }
 
@@ -141,7 +180,7 @@ static NSString *kRecordTableViewCell = @"RecordTableViewCell";
 //    if (cell == nil) {
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:kRecordTableViewCell];
 //    }
-    RLMResults* result = self.recordsArray[[self getIndexInWeek]];
+    RLMResults* result = self.recordsArray[self.selectedIndex];
 //
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
     UILabel *categoryLabel = (UILabel *)[cell viewWithTag:101];
