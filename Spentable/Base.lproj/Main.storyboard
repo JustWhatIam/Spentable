@@ -140,13 +140,10 @@
                                     <constraint firstAttribute="bottom" secondItem="fZb-t9-0bM" secondAttribute="bottom" id="16O-1d-lC3"/>
                                     <constraint firstItem="fZb-t9-0bM" firstAttribute="leading" secondItem="o6E-AR-Fr7" secondAttribute="leading" id="K7u-dd-piQ"/>
                                     <constraint firstItem="fZb-t9-0bM" firstAttribute="top" secondItem="o6E-AR-Fr7" secondAttribute="top" id="NIz-0B-vUU"/>
-                                    <constraint firstAttribute="bottom" secondItem="1sW-NA-0ji" secondAttribute="bottom" id="NbI-f0-r4E"/>
                                     <constraint firstAttribute="bottom" secondItem="fZb-t9-0bM" secondAttribute="bottom" id="RMI-IP-M9f"/>
-                                    <constraint firstItem="1sW-NA-0ji" firstAttribute="top" secondItem="o6E-AR-Fr7" secondAttribute="top" id="dJg-Rp-54f"/>
                                     <constraint firstItem="fZb-t9-0bM" firstAttribute="top" secondItem="o6E-AR-Fr7" secondAttribute="top" id="e1I-OI-5Ge"/>
                                     <constraint firstItem="1sW-NA-0ji" firstAttribute="top" secondItem="o6E-AR-Fr7" secondAttribute="top" id="ngg-iI-pVH"/>
                                     <constraint firstAttribute="trailing" secondItem="fZb-t9-0bM" secondAttribute="trailing" id="oKd-xg-Unc"/>
-                                    <constraint firstItem="1sW-NA-0ji" firstAttribute="top" secondItem="o6E-AR-Fr7" secondAttribute="top" id="r2f-Cy-OgX"/>
                                     <constraint firstAttribute="bottom" secondItem="fZb-t9-0bM" secondAttribute="bottom" id="rQI-lh-gys"/>
                                     <constraint firstAttribute="height" constant="70" id="vab-oo-rXK"/>
                                     <constraint firstItem="fZb-t9-0bM" firstAttribute="top" secondItem="1sW-NA-0ji" secondAttribute="bottom" id="vv2-xz-kma"/>
@@ -158,9 +155,6 @@
                                         <exclude reference="NIz-0B-vUU"/>
                                         <exclude reference="RMI-IP-M9f"/>
                                         <exclude reference="e1I-OI-5Ge"/>
-                                        <exclude reference="NbI-f0-r4E"/>
-                                        <exclude reference="dJg-Rp-54f"/>
-                                        <exclude reference="r2f-Cy-OgX"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -191,17 +185,11 @@
                                                     <rect key="frame" x="205" y="0.0" width="100" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="JDH-Mt-QZ1"/>
-                                                        <constraint firstAttribute="width" constant="88" id="b86-Bj-dqI"/>
                                                         <constraint firstAttribute="width" constant="100" id="wYK-uj-aAJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="b86-Bj-dqI"/>
-                                                        </mask>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="datetime" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06G-tK-ftG" userLabel="Time Label">
                                                     <rect key="frame" x="205" y="24" width="100" height="11"/>
@@ -324,10 +312,8 @@
                                                 <constraint firstItem="eaL-iV-PDc" firstAttribute="top" secondItem="0bu-tl-Eah" secondAttribute="bottom" id="3ts-Hr-VVm"/>
                                                 <constraint firstItem="8bD-RD-xkS" firstAttribute="leading" secondItem="bPh-LT-hQo" secondAttribute="leadingMargin" id="7Jd-V7-bSj"/>
                                                 <constraint firstItem="8bD-RD-xkS" firstAttribute="top" secondItem="bPh-LT-hQo" secondAttribute="topMargin" id="EGg-yK-amE"/>
-                                                <constraint firstItem="w7f-9R-79t" firstAttribute="top" secondItem="8bD-RD-xkS" secondAttribute="bottom" id="MkE-Qs-Cuv"/>
                                                 <constraint firstAttribute="bottom" secondItem="w7f-9R-79t" secondAttribute="bottom" id="QbA-pI-zkt"/>
                                                 <constraint firstItem="eaL-iV-PDc" firstAttribute="leading" secondItem="0bu-tl-Eah" secondAttribute="leading" id="YJg-fS-Uhg"/>
-                                                <constraint firstItem="w7f-9R-79t" firstAttribute="top" secondItem="bPh-LT-hQo" secondAttribute="top" constant="45" id="au4-XE-Z0j"/>
                                                 <constraint firstAttribute="trailing" secondItem="eaL-iV-PDc" secondAttribute="trailing" id="gZx-LA-PVA"/>
                                                 <constraint firstAttribute="bottom" secondItem="eaL-iV-PDc" secondAttribute="bottom" id="meu-zZ-k2k"/>
                                                 <constraint firstAttribute="trailing" secondItem="0bu-tl-Eah" secondAttribute="trailing" id="qPe-uw-KpK"/>
@@ -338,8 +324,6 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="MkE-Qs-Cuv"/>
-                                                    <exclude reference="au4-XE-Z0j"/>
                                                     <exclude reference="uav-lj-ElY"/>
                                                 </mask>
                                             </variation>
