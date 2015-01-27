@@ -45,7 +45,18 @@ static NSString *kCategoryIdentifier = @"CategoryViewCell";
     _costStr = nil;
     [self updateNumpad];
     [self updateDateTimeButton];
-    self.categories = [[CategoryManager instance] categoriesArray];;
+    self.categories = [[CategoryManager instance] categoriesArray];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    int index = 0;
+    NSIndexPath *selection = [NSIndexPath indexPathForItem:index
+                                                 inSection:0];
+    [self.collectionView selectItemAtIndexPath:selection
+                                      animated:YES
+                                scrollPosition:UICollectionViewScrollPositionNone];
+    [self collectionView:self.collectionView didHighlightItemAtIndexPath:selection];
+    self.selectedCateory = self.categories[index];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,15 +103,13 @@ static NSString *kCategoryIdentifier = @"CategoryViewCell";
         HDCategory *cate = (HDCategory *)obj;
         label.text = cate.categoryKeyOrName;
     }
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     self.selectedCateory = self.categories[indexPath.row];
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 
@@ -116,9 +125,8 @@ static NSString *kCategoryIdentifier = @"CategoryViewCell";
                          }
                          completion:nil ];
     }
-    
-    NSLog(@"%@", cell.isSelected ? @"YES" : @"No");
-    if (!cell.isSelected) {
+
+//    if (!cell.isSelected) {
 
         [UIView animateWithDuration:0.1
                               delay:0
@@ -127,7 +135,7 @@ static NSString *kCategoryIdentifier = @"CategoryViewCell";
                          [  cell setBackgroundColor:[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1]];
                          }
                          completion:nil];
-    }
+//    }
 }
 
 - (void)updateDateTimeButton {

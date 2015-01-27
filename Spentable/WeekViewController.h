@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import <BEMSimpleLineGraphView.h>
 
-@interface WeekViewController : BaseViewController
+@interface WeekViewController : BaseViewController <BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
 
 @end

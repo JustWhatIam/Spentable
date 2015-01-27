@@ -1,14 +1,17 @@
 PODS:
+  - BEMSimpleLineGraph (3.2)
   - KLCPopup (1.0)
   - Realm (0.90.2):
     - Realm/Headers (= 0.90.2)
   - Realm/Headers (0.90.2)
 
 DEPENDENCIES:
+  - BEMSimpleLineGraph (= 3.2)
   - KLCPopup (= 1.0.0)
   - Realm (= 0.90.2)
 
 SPEC CHECKSUMS:
+  BEMSimpleLineGraph: 68e349eb22320d1a21a29e390d0f67772f6f6f44
   KLCPopup: 23548d0454ca156b0eb684f791f234b9c2134369
   Realm: e5e2a23e34e1f8c00a1484c130a9d00c1394a2af
 

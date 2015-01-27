@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85290F291A763CB1006A8670 /* FormatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 85290F281A763CB1006A8670 /* FormatHelper.m */; };
+		85290F2C1A778C13006A8670 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 85290F2B1A778C13006A8670 /* DateHelper.m */; };
 		853FCB1E1A680B740030A93B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 853FCB1D1A680B740030A93B /* main.m */; };
 		853FCB211A680B740030A93B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 853FCB201A680B740030A93B /* AppDelegate.m */; };
 		853FCB241A680B740030A93B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853FCB231A680B740030A93B /* MainViewController.m */; };
@@ -47,6 +48,8 @@
 		694087AB2802BCA6DD5C07F7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		85290F271A763CB1006A8670 /* FormatHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatHelper.h; path = Helper/FormatHelper.h; sourceTree = "<group>"; };
 		85290F281A763CB1006A8670 /* FormatHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatHelper.m; path = Helper/FormatHelper.m; sourceTree = "<group>"; };
+		85290F2A1A778C13006A8670 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateHelper.h; path = Helper/DateHelper.h; sourceTree = "<group>"; };
+		85290F2B1A778C13006A8670 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateHelper.m; path = Helper/DateHelper.m; sourceTree = "<group>"; };
 		853FCB181A680B740030A93B /* Spentable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spentable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		853FCB1C1A680B740030A93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		853FCB1D1A680B740030A93B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 			children = (
 				85290F271A763CB1006A8670 /* FormatHelper.h */,
 				85290F281A763CB1006A8670 /* FormatHelper.m */,
+				85290F2A1A778C13006A8670 /* DateHelper.h */,
+				85290F2B1A778C13006A8670 /* DateHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -147,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				85290F261A763C7E006A8670 /* Helper */,
-				8548922F1A734F09004938D5 /* DB */,
 				8548921B1A71F833004938D5 /* DataObject */,
 				854892171A71F58F004938D5 /* Managers */,
 				853FCB411A6812130030A93B /* DayViewController.h */,
@@ -225,13 +229,6 @@
 				8548922C1A724095004938D5 /* HDTableRecord.m */,
 			);
 			name = DataObject;
-			sourceTree = "<group>";
-		};
-		8548922F1A734F09004938D5 /* DB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DB;
 			sourceTree = "<group>";
 		};
 		E0BA2CE4501ABD411D496D0D /* Pods */ = {
@@ -385,6 +382,7 @@
 				8548922D1A724095004938D5 /* HDCategory.m in Sources */,
 				853FCB211A680B740030A93B /* AppDelegate.m in Sources */,
 				853FCB1E1A680B740030A93B /* main.m in Sources */,
+				85290F2C1A778C13006A8670 /* DateHelper.m in Sources */,
 				85EEE0AE1A6BEC5D0024F807 /* CategoryViewController.m in Sources */,
 				8548921A1A71F69B004938D5 /* CategoryManager.m in Sources */,
 				853FCB511A6AAC6C0030A93B /* AddRecordViewController.m in Sources */,

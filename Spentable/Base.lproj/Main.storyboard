@@ -267,12 +267,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-9p-1jB" userLabel="Week Chooser View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThJ-9p-1jB" userLabel="Week Chooser View" customClass="BEMSimpleLineGraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="X6O-lb-7da"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Qr7-U3-lG0" id="lz2-dk-LAG"/>
+                                    <outlet property="delegate" destination="Qr7-U3-lG0" id="gTI-sv-EWY"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rja-B7-mGi">
                                 <rect key="frame" x="0.0" y="210" width="320" height="358"/>
@@ -361,6 +365,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="recordTableView" destination="rja-B7-mGi" id="SKe-Xl-mcx"/>
+                        <outlet property="weekChooserView" destination="ThJ-9p-1jB" id="zps-og-OSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdR-5M-nsu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -551,11 +556,6 @@
                                         </variation>
                                     </collectionViewCell>
                                 </cells>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="WnK-fd-sps" id="Fva-kG-GSm"/>
                                     <outlet property="delegate" destination="WnK-fd-sps" id="nGV-vA-ijG"/>

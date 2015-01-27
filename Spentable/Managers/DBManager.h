@@ -25,12 +25,5 @@
 
 - (NSArray *)getSumOfRecords:(RLMResults *)date;
 
-- (NSPredicate *)getTodayPredicate:(NSDate *)date;
-
-- (NSPredicate *)getTodayPredicate:(NSDate *)date andAddDays:(NSInteger)days;
-
-- (NSPredicate *)getThisWeekPredicate:(NSDate *)date;
-
-- (NSPredicate *)getThisMonthPredicate:(NSDate *)date;
 
 @end

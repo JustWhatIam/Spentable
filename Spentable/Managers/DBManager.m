@@ -10,6 +10,7 @@
 #import "CategoryManager.h"
 #import "HDCategory.h"
 #import "HDTableRecord.h"
+#import "DateHelper.h"
 #import <Realm.h>
 
 static DBManager *_instance = nil;
@@ -58,7 +59,7 @@ static DBManager *_instance = nil;
 
 - (void)getWholeMonthRecords:(NSDate *)date  {
     
-    self.recordsArray = [HDTableRecord objectsWithPredicate:[self getThisMonthPredicate:date]];
+    self.recordsArray = [HDTableRecord objectsWithPredicate:[DateHelper getThisMonthPredicate:date]];
     self.recordsArray = [self.recordsArray sortedResultsUsingProperty:@"date" ascending:NO];
 }
 
@@ -73,7 +74,7 @@ static DBManager *_instance = nil;
         NSLog(@"%f", record.cost);
     }
     
-    return [self.recordsArray objectsWithPredicate:[self getTodayPredicate:date]];
+    return [self.recordsArray objectsWithPredicate:[DateHelper getTodayPredicate:date]];
 }
 
 - (RLMResults *)getRecordsOfWeek:(NSDate *)date {
@@ -81,7 +82,7 @@ static DBManager *_instance = nil;
     if (!self.recordsArray) {
         [self getWholeMonthRecords:date];
     }
-    return [self.recordsArray objectsWithPredicate:[self getThisWeekPredicate:date]];
+    return [self.recordsArray objectsWithPredicate:[DateHelper getThisWeekPredicate:date]];
 }
 
 - (RLMResults *)getRecordsOfMonth:(NSDate *)date {
@@ -114,58 +115,6 @@ static DBManager *_instance = nil;
 
 }
 
-#pragma mark - Get NSPredicate for specific range
-
-- (NSPredicate *)getTodayPredicate:(NSDate *)date {
-    
-        return [self getTodayPredicate:date andAddDays:0];
-}
-
-- (NSPredicate *)getTodayPredicate:(NSDate *)date andAddDays:(NSInteger)days {
-    
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];
-    [comp setDay:comp.day+days];
-    NSDate *today = [cal dateFromComponents:comp];
-    [comp setDay:comp.day+1];
-    NSDate *tomorrow = [cal dateFromComponents:comp];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"date >= %@ AND date < %@", today, tomorrow];
-    
-    return  pred;
-}
-
-- (NSPredicate *)getThisWeekPredicate:(NSDate *)date {
-    
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit) fromDate:date];
-    
-    [comp setWeekday:1]; //Sunday
-    NSDate *firstDayOfThisMonth = [cal dateFromComponents:comp];
-    
-    NSDateComponents *oneWeek = [[NSDateComponents alloc] init];
-    [oneWeek setDay:8];
-    NSDate *firstDayOfNextMonth = [cal dateByAddingComponents:oneWeek toDate:firstDayOfThisMonth options:0];
-    
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"date >= %@ AND date < %@", firstDayOfThisMonth, firstDayOfNextMonth];
-    
-    return pred;
-}
-
-- (NSPredicate *)getThisMonthPredicate:(NSDate *)date {
-    
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];
-    [comp setDay:1];
-    NSDate *firstDayOfThisMonth = [cal dateFromComponents:comp];
-    [comp setMonth:comp.month+1];
-    NSDate *firstDayOfNextMonth = [cal dateFromComponents:comp];
-    //[cal dateByAddingUnit:NSMonthCalendarUnit value:1 toDate:firstDayOfThisMonth options:0]; NS_AVAILABLE(10_9, 8_0)
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"date >= %@ AND date < %@", firstDayOfThisMonth, firstDayOfNextMonth];
-    
-    return pred;
-}
 
 
 
